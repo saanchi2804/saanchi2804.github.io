@@ -435,6 +435,12 @@
   .cform .row{display:flex;gap:14px;flex-wrap:wrap}
   .cform .row .f{flex:1;min-width:180px}
   .cform #cSend{align-self:flex-start;text-align:center}
+  .cform #cSend[disabled]{opacity:.55;cursor:default}
+  .cform .sent{
+    margin:0;font-size:.9rem;color:var(--text);border:1px solid rgba(251,113,133,.45);
+    background:rgba(251,113,133,.09);border-radius:12px;padding:13px 16px;
+  }
+  .cform .sent a{color:var(--rose)}
 
   /* ---------- contact ---------- */
   #contact{padding:140px 0 60px;text-align:center;position:relative;overflow:hidden}
@@ -950,9 +956,10 @@
         <textarea id="cMsg" placeholder="I am building something and could use an AI engineer who..."></textarea>
       </div>
       <p class="err" id="cErr" role="alert"></p>
-      <a class="hero-cta" id="cSend" href="mailto:saanchi.agarwal@yale.edu">Send message &rarr;</a>
+      <button class="hero-cta" id="cSend" type="submit">Send message &rarr;</button>
+      <p class="sent" id="cOk" hidden></p>
     </form>
-    <p class="m-note">This opens your mail app with the message ready, addressed to saanchi.agarwal@yale.edu. Prefer to write it yourself? That address works too.</p>
+    <p class="m-note">Goes straight to my inbox. I usually reply within a day.</p>
   </div>
 </div>
 
@@ -1052,7 +1059,8 @@ if (ptAmt){
   ptRecommend();
 }
 
-/* ---------- say hello: compose a real message, hand it to the mail app ---------- */
+/* ---------- say hello: posts the message straight to the inbox ---------- */
+var INBOX = "saanchi.2000@gmail.com";
 var helloModal = document.getElementById("modal-hello");
 function openHello(){
   helloModal.classList.add("open");
@@ -1062,71 +1070,58 @@ function openHello(){
 }
 var helloBtn = document.getElementById("helloBtn");
 if (helloBtn) helloBtn.addEventListener("click", openHello);
-
-/* the nav's Contact link goes straight to the same form */
 var navContact = document.querySelector('.site-nav a[href="#contact"]');
 if (navContact) navContact.addEventListener("click", function(e){ e.preventDefault(); openHello(); });
 
-var cName = document.getElementById("cName");
-var cEmail = document.getElementById("cEmail");
-var cMsg = document.getElementById("cMsg");
-var cSend = document.getElementById("cSend");
-var cErr = document.getElementById("cErr");
-function buildMail(){
-  var n = cName.value.trim(), em = cEmail.value.trim(), m = cMsg.value.trim();
-  var subject = n ? ("Hello from " + n) : "Hello from your portfolio";
-  var sig = [n, em].filter(Boolean).join("\n");
-  var body = m + (sig ? "\n\n--\n" + sig : "");
-  cSend.href = "mailto:saanchi.agarwal@yale.edu?subject=" + encodeURIComponent(subject) +
-               "&body=" + encodeURIComponent(body);
-}
-if (cSend){
-  [cName, cEmail, cMsg].forEach(function(el){ el.addEventListener("input", function(){ buildMail(); cErr.textContent = ""; }); });
-  cSend.addEventListener("click", function(e){
-    if (!cMsg.value.trim()){
-      e.preventDefault();
-      cErr.textContent = "Add a message first, then this will open your mail app.";
-      cMsg.focus();
-    }
-  });
-  document.getElementById("cForm").addEventListener("submit", function(e){ e.preventDefault(); cSend.click(); });
-  buildMail();
-}
+var cForm = document.getElementById("cForm");
+if (cForm){
+  var cName = document.getElementById("cName"), cEmail = document.getElementById("cEmail"),
+      cMsg = document.getElementById("cMsg"), cSend = document.getElementById("cSend"),
+      cErr = document.getElementById("cErr"), cOk = document.getElementById("cOk");
 
-/* ---------- points tracker: sidebar pages, redeem sub-tabs, live milestones ---------- */
-var appNav = document.querySelector(".app-nav");
-if (appNav){
-  appNav.addEventListener("click", function(e){
-    var a = e.target.closest("a[data-go]"); if(!a) return;
+  [cName, cEmail, cMsg].forEach(function(el){
+    el.addEventListener("input", function(){ cErr.textContent = ""; });
+  });
+
+  cForm.addEventListener("submit", function(e){
     e.preventDefault();
-    appNav.querySelectorAll("a").forEach(function(x){ x.classList.remove("on"); });
-    a.classList.add("on");
-    document.querySelectorAll(".pg").forEach(function(p){ p.hidden = p.dataset.pg !== a.dataset.go; });
-    var main = document.querySelector(".app-main"); if (main) main.scrollTop = 0;
+    var name = cName.value.trim(), email = cEmail.value.trim(), msg = cMsg.value.trim();
+    if (!msg){ cErr.textContent = "Add a message before sending."; cMsg.focus(); return; }
+    if (!email){ cErr.textContent = "Add your email so I can reply."; cEmail.focus(); return; }
+
+    cErr.textContent = "";
+    cSend.disabled = true;
+    var label = cSend.innerHTML;
+    cSend.innerHTML = "Sending&hellip;";
+
+    fetch("https://formsubmit.co/ajax/" + INBOX, {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify({
+        name: name || "(no name given)",
+        email: email,
+        message: msg,
+        _subject: "Portfolio message from " + (name || email),
+        _captcha: "false",
+        _template: "table"
+      })
+    })
+    .then(function(r){ if(!r.ok) throw new Error("bad status " + r.status); return r.json(); })
+    .then(function(){
+      cForm.querySelectorAll(".f, .row, .err").forEach(function(el){ el.hidden = true; });
+      cSend.hidden = true;
+      cOk.hidden = false;
+      cOk.innerHTML = "Message sent. Thanks" + (name ? ", " + name.split(" ")[0] : "") +
+                      " &mdash; I will reply to <b>" + email.replace(/&/g,"&amp;").replace(/</g,"&lt;") + "</b>.";
+    })
+    .catch(function(){
+      cSend.disabled = false;
+      cSend.innerHTML = label;
+      var subject = encodeURIComponent("Hello from " + (name || "your portfolio"));
+      var body = encodeURIComponent(msg + "\n\n--\n" + [name, email].filter(Boolean).join("\n"));
+      cErr.innerHTML = 'That did not go through. <a href="mailto:' + INBOX + '?subject=' + subject +
+                       '&body=' + body + '" style="color:var(--rose)">Send it by email instead</a>.';
+    });
   });
 }
-var rtTabs = document.getElementById("rtTabs");
-if (rtTabs){
-  rtTabs.addEventListener("click", function(e){
-    var b = e.target.closest(".rt-tab"); if(!b) return;
-    rtTabs.querySelectorAll(".rt-tab").forEach(function(x){ x.classList.remove("on"); });
-    b.classList.add("on");
-    document.querySelectorAll(".rt").forEach(function(p){ p.hidden = p.dataset.rt !== b.dataset.rt; });
-  });
-}
-function inr(n){
-  var s = String(Math.round(n)), last3 = s.slice(-3), rest = s.slice(0, -3);
-  return rest ? rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + last3 : last3;
-}
-document.querySelectorAll('.ms .sp input[data-target]').forEach(function(inp){
-  inp.addEventListener("input", function(){
-    var target = +inp.dataset.target, val = Math.max(0, +inp.value || 0);
-    var pct = Math.min(100, Math.round(val / target * 100));
-    document.getElementById(inp.dataset.pct).textContent = pct + "%";
-    document.getElementById(inp.dataset.bar).style.width = pct + "%";
-    var cur = inp.dataset.cur;
-    var spEl = document.getElementById(inp.id.replace("ms", "sp"));
-    if (spEl) spEl.textContent = cur + (cur === "$" ? val.toLocaleString("en-US") : inr(val)) + " spent";
-  });
-});
 </script>
