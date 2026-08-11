@@ -54,7 +54,7 @@
 
   /* ---------- hero ---------- */
   #hero{
-    --orbit:120px;
+    --orbit:158px;
     min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
     text-align:center;position:relative;padding:110px 20px 80px;overflow:hidden;
   }
@@ -68,9 +68,9 @@
   .hero-avatar{
     width:190px;height:190px;border-radius:50%;object-fit:cover;object-position:top;
     border:3px solid rgba(255,255,255,.18);box-shadow:0 0 44px var(--glow);
-    position:relative;margin-bottom:28px;
+    position:relative;margin-bottom:46px;
   }
-  .hero-eyebrow{font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin:0 0 26px;position:relative}
+  .hero-eyebrow{font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;color:var(--dim);margin:0 0 34px;position:relative}
   h1{
     font-weight:200;font-size:clamp(2.7rem,8.5vw,6rem);line-height:1.06;margin:0;
     letter-spacing:-.02em;position:relative;text-wrap:balance;color:var(--text);
@@ -101,20 +101,20 @@
   .chip .s{color:var(--peach)}
   @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
   /* chips orbit the photo: anchored to page centre so they hug it at any width */
-  .c1{top:13%;right:calc(50% + var(--orbit));animation-delay:0s}
-  .c2{top:20%;right:calc(50% + var(--orbit) + 46px);animation-delay:.9s}
-  .c3{top:26.5%;right:calc(50% + var(--orbit) + 6px);animation-delay:1.8s}
-  .c4{top:33%;right:calc(50% + var(--orbit) + 58px);animation-delay:2.7s}
-  .c5{top:40%;right:calc(50% + var(--orbit) + 185px);animation-delay:3.6s}
-  .c6{top:12%;left:calc(50% + var(--orbit));animation-delay:.45s}
-  .c7{top:19%;left:calc(50% + var(--orbit) + 46px);animation-delay:1.35s}
-  .c8{top:25.5%;left:calc(50% + var(--orbit) + 6px);animation-delay:2.25s}
-  .c9{top:32%;left:calc(50% + var(--orbit) + 58px);animation-delay:3.15s}
-  .c10{top:39%;left:calc(50% + var(--orbit) + 185px);animation-delay:4.05s}
+  .c1{top:11%;right:calc(50% + var(--orbit));animation-delay:0s}
+  .c2{top:18%;right:calc(50% + var(--orbit) + 52px);animation-delay:.9s}
+  .c3{top:27%;right:calc(50% + var(--orbit) + 4px);animation-delay:1.8s}
+  .c4{top:36%;right:calc(50% + var(--orbit) + 64px);animation-delay:2.7s}
+  .c5{top:45%;right:calc(50% + var(--orbit) + 150px);animation-delay:3.6s}
+  .c6{top:10%;left:calc(50% + var(--orbit));animation-delay:.45s}
+  .c7{top:17%;left:calc(50% + var(--orbit) + 52px);animation-delay:1.35s}
+  .c8{top:26%;left:calc(50% + var(--orbit) + 4px);animation-delay:2.25s}
+  .c9{top:35%;left:calc(50% + var(--orbit) + 64px);animation-delay:3.15s}
+  .c10{top:44%;left:calc(50% + var(--orbit) + 150px);animation-delay:4.05s}
   /* retire each chip just before it would clip its own edge (widths measured, not guessed) */
   @media(max-width:1040px){.c5,.c10{display:none}}
-  @media(max-width:980px){#hero{--orbit:104px}.chip{font-size:.72rem}}
-  @media(max-width:760px){#hero{--orbit:92px}}
+  @media(max-width:980px){#hero{--orbit:120px}.chip{font-size:.72rem}}
+  @media(max-width:760px){#hero{--orbit:98px}}
   @media(max-width:720px){.c2{display:none}}
   @media(max-width:690px){.c4{display:none}}
   @media(max-width:670px){.c3{display:none}}
@@ -305,6 +305,110 @@
     .app-main{padding:16px}
     .fld input{width:80px}
   }
+
+  /* points app: extra pages */
+  .pg[hidden]{display:none}
+  .app-nav a{cursor:pointer}
+  .warn{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:.76rem;
+    background:#FEF2F2;border:1px solid #FBD5D5;color:#9B2C2C;border-radius:8px;padding:9px 13px;margin-bottom:14px}
+  .warn.soft{background:#FFFBEB;border-color:#F5E0A3;color:#8A6D1F}
+  .warn b{font-weight:700}
+  .prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media(max-width:680px){.prog-grid{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid #E8E9F0;border-radius:10px;padding:14px}
+  .pcard .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .pcard .ab{width:34px;height:34px;border-radius:9px;color:#fff;font-weight:700;font-size:.72rem;
+    display:flex;align-items:center;justify-content:center;flex:0 0 34px}
+  .pcard .nm{font-size:.8rem;font-weight:700;color:#1A1C22;line-height:1.25}
+  .pcard .sub{font-size:.68rem;color:#8A8F9C}
+  .pcard .bal{font-size:1.25rem;font-weight:700;color:#1A1C22;font-variant-numeric:tabular-nums}
+  .pcard .bal span{font-size:.72rem;color:#9AA0AC;font-weight:400}
+  .pcard .val{font-size:.72rem;color:#6B7079;margin-top:2px}
+  .pcard .val b{color:#3C404A}
+  .pcard .exp{display:inline-block;margin-top:9px;font-size:.65rem;border-radius:99px;padding:2px 9px;
+    background:#F1F2F6;color:#6B7079}
+  .pcard .exp.hot{background:#FEF2F2;color:#9B2C2C}
+  .ms-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:720px){.ms-wrap{grid-template-columns:1fr}}
+  .ms-col h6{display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:700;color:#1A1C22;margin:0 0 9px}
+  .ms-col h6 .ab{width:24px;height:24px;border-radius:7px;color:#fff;font-size:.6rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .ms{background:#fff;border:1px solid #E8E9F0;border-radius:10px;padding:13px;margin-bottom:10px}
+  .ms .r1{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:7px}
+  .ms .t{font-size:.78rem;font-weight:700;color:#1A1C22}
+  .ms .d{font-size:.66rem;color:#9AA0AC;white-space:nowrap}
+  .ms .tg{font-size:.7rem;color:#6B7079;margin-bottom:8px}
+  .ms .tg code{background:#F1F2F6;border-radius:4px;padding:1px 6px;font-size:.68rem;color:#3C404A}
+  .ms .sp{display:flex;align-items:center;gap:7px;font-size:.7rem;color:#6B7079;margin-bottom:9px}
+  .ms .sp input{width:88px;font-family:inherit;font-size:.72rem;color:#1A1C22;background:#fff;
+    border:1px solid #D6D3E8;border-radius:6px;padding:5px 7px}
+  .ms .sp input:focus{outline:2px solid #7C3AED;outline-offset:-1px}
+  .ms .miss{font-size:.68rem;color:#B45309;margin:0 0 7px;display:flex;gap:5px}
+  .ms .pct{float:right;font-size:1.05rem;font-weight:700;color:#1A1C22;font-variant-numeric:tabular-nums}
+  .ms .bar{height:7px;border-radius:99px;background:#EDEEF3;overflow:hidden;margin-bottom:6px}
+  .ms .bar div{height:100%;border-radius:99px;background:#4F46E5;transition:width .3s ease}
+  .ms .foot{display:flex;justify-content:space-between;font-size:.66rem;color:#8A8F9C;font-variant-numeric:tabular-nums}
+  .ms .ok{background:#F0FDF4;border:1px solid #BBF7D0;color:#166534;border-radius:7px;padding:8px 11px;font-size:.7rem}
+  .slots{display:flex;gap:5px;margin:7px 0 4px}
+  .slots i{height:6px;flex:1;border-radius:99px;background:#EDEEF3}
+  .slots i.on{background:#3B82F6}
+  .rd-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:14px}
+  .rd-tile{background:#fff;border:1px solid #E8E9F0;border-radius:10px;padding:12px 14px}
+  .rd-tile .l{font-size:.7rem;color:#6B7079}
+  .rd-tile .v{font-size:1.5rem;font-weight:700;color:#1A1C22;line-height:1.2}
+  .rd-tile .v.b{color:#2563EB}
+  .rt-tabs{display:flex;gap:7px;margin-bottom:13px;flex-wrap:wrap}
+  .rt-tab{font-family:inherit;font-size:.74rem;font-weight:600;border:none;border-radius:7px;
+    background:#F1F2F6;color:#4A4F5C;padding:7px 13px;cursor:pointer}
+  .rt-tab:hover{background:#E6E8EF}
+  .rt-tab.on{background:#F5B301;color:#1A1C22}
+  .rt-tab:focus-visible{outline:2px solid #7C3AED;outline-offset:2px}
+  .rd-acct{background:#fff;border:1px solid #E8E9F0;border-radius:10px;margin-bottom:12px;overflow:hidden}
+  .rd-acct .hd{display:flex;align-items:center;gap:9px;padding:11px 13px;border-bottom:1px solid #EFF0F5}
+  .rd-acct .hd .ab{width:26px;height:26px;border-radius:7px;color:#fff;font-size:.6rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .rd-acct .hd .nm{font-size:.8rem;font-weight:700;color:#1A1C22}
+  .rd-acct .hd .bl{margin-left:auto;font-size:.72rem;color:#8A8F9C;font-variant-numeric:tabular-nums}
+  .rd-sec{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;padding:11px 13px 7px}
+  .rd-sec.now{color:#0F766E}
+  .rd-sec.save{color:#2563EB}
+  .rd-opt{display:flex;gap:10px;align-items:flex-start;margin:0 13px 8px;padding:10px 11px;
+    border:1px solid #EFF0F5;border-radius:8px}
+  .rd-opt.top{background:#F0FDF9;border-color:#B6E8DC}
+  .rd-opt .rk{width:22px;height:22px;border-radius:50%;background:#EDEEF3;color:#6B7079;font-size:.6rem;
+    font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 22px}
+  .rd-opt.top .rk{background:#0D9488;color:#fff}
+  .rd-opt .bd{flex:1;min-width:0}
+  .rd-opt .bd b{display:block;font-size:.76rem;color:#1A1C22;margin-bottom:2px}
+  .rd-opt .bd p{margin:0;font-size:.7rem;color:#6B7079;line-height:1.45}
+  .rd-opt .rt{text-align:right;flex:0 0 auto}
+  .rd-opt .rt .pp{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:.66rem;
+    border:1px solid #E2E4EC;border-radius:99px;padding:2px 8px;color:#3C404A;white-space:nowrap}
+  .rd-opt .rt .tot{display:block;margin-top:4px;font-size:.72rem;font-weight:700;color:#B45309;white-space:nowrap}
+  .rd-save{padding:0 13px 13px}
+  .rd-save b{display:block;font-size:.78rem;color:#1A1C22;margin-bottom:3px}
+  .rd-save p{margin:0 0 9px;font-size:.7rem;color:#6B7079;line-height:1.45}
+  .rd-save .bar{height:7px;border-radius:99px;background:#E5EAF5;overflow:hidden;margin-bottom:5px}
+  .rd-save .bar div{height:100%;border-radius:99px;background:#3B82F6}
+  .rd-save .fo{display:flex;justify-content:space-between;font-size:.65rem;color:#8A8F9C;font-variant-numeric:tabular-nums}
+  .promo{background:#fff;border:1px solid #E8E9F0;border-radius:10px;padding:13px;margin-bottom:11px}
+  .promo .r1{display:flex;gap:9px;align-items:flex-start;margin-bottom:6px}
+  .promo .tag{font-size:.58rem;letter-spacing:.09em;font-weight:700;background:#D1FAE5;color:#065F46;
+    border-radius:5px;padding:3px 7px;flex:0 0 auto}
+  .promo .ti{font-size:.78rem;font-weight:700;color:#1A1C22;flex:1}
+  .promo .amt{font-family:ui-monospace,Menlo,monospace;font-size:.63rem;background:#FFFBEB;border:1px solid #F5E0A3;
+    color:#8A6D1F;border-radius:99px;padding:3px 9px;white-space:nowrap}
+  .promo p{margin:0 0 7px;font-size:.7rem;color:#6B7079;line-height:1.5}
+  .promo .fo{display:flex;gap:12px;font-size:.66rem;color:#8A8F9C}
+  .promo .fo .ex{color:#C2410C}
+  .set{background:#fff;border:1px solid #E8E9F0;border-radius:10px;padding:14px;margin-bottom:11px}
+  .set h6{font-size:.8rem;font-weight:700;color:#1A1C22;margin:0 0 10px}
+  .set .row{display:grid;grid-template-columns:150px 1fr;gap:9px;align-items:center;margin-bottom:8px;font-size:.73rem}
+  @media(max-width:600px){.set .row{grid-template-columns:1fr;gap:3px}}
+  .set .row label{color:#6B7079}
+  .set .row .v{background:#F7F8FC;border:1px solid #E4E6EE;border-radius:6px;padding:6px 9px;color:#3C404A}
+  .set .row .v.mono{font-family:ui-monospace,Menlo,monospace;font-size:.68rem;color:#8A8F9C}
+
   /* story snaps */
   .snap{border:1px solid var(--hairline);border-radius:16px;overflow:hidden;margin-bottom:20px;background:rgba(255,255,255,.03)}
   .snap .s-frame{aspect-ratio:16/7;display:block;width:100%}
@@ -520,7 +624,7 @@
     <button class="m-close" aria-label="Close">&#10005;</button>
     <p class="m-kicker">Project 2 &middot; Live preview</p>
     <h4>The Points Tracker portal</h4>
-    <p class="m-sub">The real app, running here with sample balances. Try the recommender &mdash; change the amount or category.</p>
+    <p class="m-sub">The real app, running here with sample balances. Click through the sidebar &mdash; every page is live.</p>
     <div class="app">
       <aside class="app-side">
         <div class="app-brand">
@@ -528,53 +632,242 @@
           <span>Points Tracker</span>
         </div>
         <nav class="app-nav">
-          <a class="on" href="#" onclick="return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>Home</a>
-          <a href="#" onclick="return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/></svg>Programs</a>
-          <a href="#" onclick="return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg>Milestones</a>
-          <a href="#" onclick="return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/><path d="M12 8a3 3 0 1 1 3-3 6 6 0 0 1-3 3 6 6 0 0 1-3-3 3 3 0 1 1 3 3z"/></svg>Redeem</a>
-          <a href="#" onclick="return false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 14.6a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9.4 3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1.3z"/></svg>Settings</a>
+          <a class="on" href="#" data-go="home"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 10v10h14V10"/></svg>Home</a>
+          <a href="#" data-go="programs"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/></svg>Programs</a>
+          <a href="#" data-go="milestones"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg>Milestones</a>
+          <a href="#" data-go="redeem"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/><path d="M12 8a3 3 0 1 1 3-3 6 6 0 0 1-3 3 6 6 0 0 1-3-3 3 3 0 1 1 3 3z"/></svg>Redeem</a>
+          <a href="#" data-go="settings"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 14.6a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9.4 3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1.3z"/></svg>Settings</a>
         </nav>
         <div class="app-foot">Points Tracker v1.0<b>Personal dashboard</b></div>
       </aside>
       <div class="app-main">
-        <p class="app-h">Home</p>
+        <!-- ============ HOME ============ -->
+        <div class="pg" data-pg="home">
+          <p class="app-h">Home</p>
+          <section class="app-card lav">
+            <h6><i>&#10022;</i>Which card should I use?</h6>
+            <p class="hint">Tell me about an upcoming purchase and I&rsquo;ll pick the card that earns you the most.</p>
+            <div class="rec-row">
+              <span class="fld">
+                <label for="ptAmt">Amount</label>
+                <input id="ptAmt" type="number" min="0" step="50" value="600">
+              </span>
+              <span class="fld">
+                <label for="ptCat">Category</label>
+                <select id="ptCat">
+                  <option value="online" selected>Online shopping (fashion / electronics)</option>
+                  <option value="dining">Dining &amp; restaurants</option>
+                  <option value="travel">Travel (flights / hotels)</option>
+                  <option value="groceries">Groceries</option>
+                  <option value="other">Everything else</option>
+                </select>
+              </span>
+              <button class="rec-btn" id="ptGo">Recommend</button>
+            </div>
+            <div class="rec-out" id="ptOut"></div>
+            <ol class="rec-rank" id="ptRank"></ol>
+          </section>
+          <section class="app-card blu">
+            <h6><i>&#9992;</i>Your dream redemption</h6>
+            <p class="goal-t">Business class to Paris</p>
+            <div class="goal-n"><span class="a">75,000 pts</span><span class="b">100,000 pts target</span></div>
+            <div class="goal-bar"><div></div></div>
+            <p class="goal-p">You&rsquo;re <b>75%</b> there.</p>
+            <ol class="steps">
+              <li><span class="n">1</span>Earn 100,000 Chase Ultimate Rewards points (you have 75,000; 25,000 to go).</li>
+              <li><span class="n">2</span>Transfer 100,000 points 1:1 to Flying Blue (Air France / KLM).</li>
+              <li><span class="n">3</span>Book Business class JFK&ndash;CDG for about 100,000 Flying Blue miles.</li>
+            </ol>
+          </section>
+        </div>
 
-        <section class="app-card lav">
-          <h6><i>&#10022;</i>Which card should I use?</h6>
-          <p class="hint">Tell me about an upcoming purchase and I&rsquo;ll pick the card that earns you the most.</p>
-          <div class="rec-row">
-            <span class="fld">
-              <label for="ptAmt">Amount</label>
-              <input id="ptAmt" type="number" min="0" step="50" value="600">
-            </span>
-            <span class="fld">
-              <label for="ptCat">Category</label>
-              <select id="ptCat">
-                <option value="online" selected>Online shopping (fashion / electronics)</option>
-                <option value="dining">Dining &amp; restaurants</option>
-                <option value="travel">Travel (flights / hotels)</option>
-                <option value="groceries">Groceries</option>
-                <option value="other">Everything else</option>
-              </select>
-            </span>
-            <button class="rec-btn" id="ptGo">Recommend</button>
+        <!-- ============ PROGRAMS ============ -->
+        <div class="pg" data-pg="programs" hidden>
+          <p class="app-h">Programs</p>
+          <div class="warn"><span>&#9888; <b>Etihad Guest</b> &mdash; 6,500 miles expire in <b>35 days</b></span><span>15 Sep 2026</span></div>
+          <div class="prog-grid">
+            <div class="pcard">
+              <div class="top"><span class="ab" style="background:#1A56DB">UR</span>
+                <span><span class="nm">Chase Sapphire Reserve</span><span class="sub">Chase Ultimate Rewards</span></span></div>
+              <div class="bal">75,000 <span>pts</span></div>
+              <div class="val">Est. value: <b>$1,500</b> &middot; 2.0&cent;/pt</div>
+              <span class="exp">No expiry</span>
+            </div>
+            <div class="pcard">
+              <div class="top"><span class="ab" style="background:#6D28D9">HD</span>
+                <span><span class="nm">HDFC Regalia Gold</span><span class="sub">Manual entry</span></span></div>
+              <div class="bal">12,500 <span>pts</span></div>
+              <div class="val">Est. value: <b>&#8377;6,250</b> &middot; &#8377;0.50/pt</div>
+              <span class="exp">Expires Jan 2027</span>
+            </div>
+            <div class="pcard">
+              <div class="top"><span class="ab" style="background:#B45309">EY</span>
+                <span><span class="nm">Etihad Guest</span><span class="sub">Manual entry</span></span></div>
+              <div class="bal">6,500 <span>mi</span></div>
+              <div class="val">Est. value: <b>$85</b> &middot; 1.3&cent;/mi</div>
+              <span class="exp hot">Expires in 35 days</span>
+            </div>
+            <div class="pcard">
+              <div class="top"><span class="ab" style="background:#7F1D1D">EK</span>
+                <span><span class="nm">Emirates Skywards</span><span class="sub">Blue &middot; Manual entry</span></span></div>
+              <div class="bal">5,000 <span>mi</span></div>
+              <div class="val">Est. value: <b>$60</b> &middot; 1.2&cent;/mi</div>
+              <span class="exp">Expires Mar 2027</span>
+            </div>
           </div>
-          <div class="rec-out" id="ptOut"></div>
-          <ol class="rec-rank" id="ptRank"></ol>
-        </section>
+          <p class="hint" style="margin-top:12px">Each card expands to a 6-month balance chart, recent transactions, and a manual balance update.</p>
+        </div>
 
-        <section class="app-card blu">
-          <h6><i>&#9992;</i>Your dream redemption</h6>
-          <p class="goal-t">Business class to Paris</p>
-          <div class="goal-n"><span class="a">75,000 pts</span><span class="b">100,000 pts target</span></div>
-          <div class="goal-bar"><div></div></div>
-          <p class="goal-p">You&rsquo;re <b>75%</b> there.</p>
-          <ol class="steps">
-            <li><span class="n">1</span>Earn 100,000 Chase Ultimate Rewards points (you have 75,000; 25,000 to go).</li>
-            <li><span class="n">2</span>Transfer 100,000 points 1:1 to Flying Blue (Air France / KLM).</li>
-            <li><span class="n">3</span>Book Business class JFK&ndash;CDG for about 100,000 Flying Blue miles.</li>
-          </ol>
-        </section>
+        <!-- ============ MILESTONES ============ -->
+        <div class="pg" data-pg="milestones" hidden>
+          <p class="app-h">Milestones</p>
+          <div class="ms-wrap">
+            <div class="ms-col">
+              <h6><span class="ab" style="background:#1A56DB">CS</span>Chase Sapphire Reserve</h6>
+              <div class="ms">
+                <div class="r1"><span class="t">Welcome Bonus Spend</span><span class="d">59 days left</span></div>
+                <p class="tg">Target: <code>$4,000</code></p>
+                <div class="sp"><label for="msChase">Your spend: $</label><input id="msChase" type="number" value="2400" step="100" data-target="4000" data-bar="barChase" data-pct="pctChase" data-cur="$"></div>
+                <p class="miss">&#9888; Miss this: forfeit the 60,000 bonus points (about $750 in travel value)</p>
+                <span class="pct" id="pctChase">60%</span>
+                <div class="bar"><div id="barChase" style="width:60%"></div></div>
+                <div class="foot"><span id="spChase">$2,400 spent</span><span>target $4,000</span></div>
+              </div>
+              <div class="ms">
+                <div class="r1"><span class="t">Chase 5/24 Rule Tracker</span></div>
+                <p class="tg">Cards opened in last 24 months: <code>1</code></p>
+                <div class="ok">You are <b>4 cards</b> under the 5/24 limit. You can likely be approved for Chase cards.</div>
+                <div class="slots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+                <div class="foot"><span>1 / 5 slots used</span></div>
+              </div>
+            </div>
+            <div class="ms-col">
+              <h6><span class="ab" style="background:#6D28D9">HD</span>HDFC Regalia Gold</h6>
+              <div class="ms">
+                <div class="r1"><span class="t">Annual Fee Waiver</span><span class="d">315 days left</span></div>
+                <p class="tg">Target: <code>&#8377;4,00,000</code></p>
+                <div class="sp"><label for="msHdfc">Your spend: &#8377;</label><input id="msHdfc" type="number" value="200000" step="10000" data-target="400000" data-bar="barHdfc" data-pct="pctHdfc" data-cur="&#8377;"></div>
+                <p class="miss">&#9888; Miss this: pay the &#8377;2,500 annual fee out of pocket</p>
+                <span class="pct" id="pctHdfc">50%</span>
+                <div class="bar"><div id="barHdfc" style="width:50%"></div></div>
+                <div class="foot"><span id="spHdfc">&#8377;2,00,000 spent</span><span>target &#8377;4,00,000</span></div>
+              </div>
+              <div class="ms">
+                <div class="r1"><span class="t">Q2 Quarterly Milestone</span><span class="d">11 days left</span></div>
+                <p class="tg">Target: <code>&#8377;1,50,000</code></p>
+                <div class="sp"><label for="msQ2">Your spend: &#8377;</label><input id="msQ2" type="number" value="90000" step="5000" data-target="150000" data-bar="barQ2" data-pct="pctQ2" data-cur="&#8377;"></div>
+                <p class="miss">&#9888; Miss this: lose &#8377;1,500 in quarterly voucher value</p>
+                <span class="pct" id="pctQ2">60%</span>
+                <div class="bar"><div id="barQ2" style="width:60%"></div></div>
+                <div class="foot"><span id="spQ2">&#8377;90,000 spent</span><span>target &#8377;1,50,000</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ REDEEM ============ -->
+        <div class="pg" data-pg="redeem" hidden>
+          <p class="app-h">Redeem</p>
+          <div class="rd-tiles">
+            <div class="rd-tile"><div class="l">Can Redeem Now</div><div class="v">3</div></div>
+            <div class="rd-tile"><div class="l">Worth Saving Towards</div><div class="v b">3</div></div>
+            <div class="rd-tile"><div class="l">Urgent</div><div class="v">0</div></div>
+          </div>
+          <div class="rt-tabs" id="rtTabs" role="tablist">
+            <button class="rt-tab on" data-rt="cards">Cards (2)</button>
+            <button class="rt-tab" data-rt="miles">Flight Miles (2)</button>
+            <button class="rt-tab" data-rt="bonuses">Bonuses (2)</button>
+          </div>
+
+          <div class="rt" data-rt="cards">
+            <div class="rd-acct">
+              <div class="hd"><span class="ab" style="background:#6D28D9">HR</span><span class="nm">HDFC Regalia Gold</span><span class="bl">12,500 pts</span></div>
+              <p class="rd-sec now">Can redeem now &middot; 3 options</p>
+              <div class="rd-opt top"><span class="rk">#1</span><span class="bd"><b>Exclusive Gold Catalogue</b><p>Roughly &#8377;8,000 of value across the catalogue for luxury items like perfume or electronics.</p></span><span class="rt"><span class="pp">&#8377;0.65/pt</span><span class="tot">&#8377;8,125 total</span></span></div>
+              <div class="rd-opt"><span class="rk">#2</span><span class="bd"><b>SmartBuy Flights &amp; Hotels</b><p>Covers about &#8377;6,250 of flight or hotel cost, useful for a mixed redemption.</p></span><span class="rt"><span class="pp">&#8377;0.50/pt</span><span class="tot">&#8377;6,250 total</span></span></div>
+              <div class="rd-opt"><span class="rk">#3</span><span class="bd"><b>Cashback / Statement Credit</b><p>A fixed &#8377;2,500 credit to your card bill.</p></span><span class="rt"><span class="pp">&#8377;0.20/pt</span><span class="tot">&#8377;2,500 total</span></span></div>
+              <p class="rd-sec save">Worth saving towards</p>
+              <div class="rd-save">
+                <b>Transfer to Accor ALL (Live Limitless)</b>
+                <p>With a transfer bonus your points could cover 2&ndash;3 nights at a Fairmont or Sofitel. Wait for a bonus (historically Q2 / Q4), then transfer 24&ndash;48h before booking.</p>
+                <div class="bar"><div style="width:50%"></div></div>
+                <div class="fo"><span>12,500</span><span>12,500 to go</span><span>25,000</span></div>
+              </div>
+            </div>
+            <div class="rd-acct">
+              <div class="hd"><span class="ab" style="background:#1A56DB">CS</span><span class="nm">Chase Sapphire Reserve</span><span class="bl">75,000 pts</span></div>
+              <p class="rd-sec now">Can redeem now &middot; 3 options</p>
+              <div class="rd-opt top"><span class="rk">#1</span><span class="bd"><b>The Edit Hotels (Luxury Portfolio)</b><p>Effective value includes on-property credit, breakfast, and upgrades.</p></span><span class="rt"><span class="pp">$0.02/pt</span><span class="tot">$1,500 total</span></span></div>
+              <div class="rd-opt"><span class="rk">#2</span><span class="bd"><b>Chase Travel Portal (Flights &amp; Hotels)</b><p>Published portal rate for Sapphire Reserve.</p></span><span class="rt"><span class="pp">$0.015/pt</span><span class="tot">$1,125 total</span></span></div>
+              <div class="rd-opt"><span class="rk">#3</span><span class="bd"><b>Cash Back / Statement Credit</b><p>One cent per point, published by Chase.</p></span><span class="rt"><span class="pp">$0.01/pt</span><span class="tot">$750 total</span></span></div>
+            </div>
+          </div>
+
+          <div class="rt" data-rt="miles" hidden>
+            <div class="rd-acct">
+              <div class="hd"><span class="ab" style="background:#B45309">EG</span><span class="nm">Etihad Guest</span><span class="bl">6,500 mi</span></div>
+              <p class="rd-sec now">Can redeem now &middot; 2 options</p>
+              <div class="rd-opt top"><span class="rk">#1</span><span class="bd"><b>Short-Haul Economy GuestSeat</b><p>Good for a quick domestic trip or a short hop to the Caribbean, covering most of a typical economy fare.</p></span><span class="rt"><span class="pp">$0.03/pt</span><span class="tot">$195 total</span></span></div>
+              <div class="rd-opt"><span class="rk">#2</span><span class="bd"><b>Partner Airline Redemption (American Airlines)</b><p>Etihad miles book short-haul American flights well; your balance nearly covers a full domestic economy award.</p></span><span class="rt"><span class="pp">6,500 miles</span><span class="tot">value varies</span></span></div>
+              <p class="rd-sec save">Worth saving towards</p>
+              <div class="rd-save">
+                <b>Mid-Haul Economy GuestSeat</b>
+                <p>You are about half way to a one-way economy flight from the East Coast to Mexico City or Bogot&aacute;.</p>
+                <div class="bar"><div style="width:48%"></div></div>
+                <div class="fo"><span>6,500</span><span>7,000 to go</span><span>13,500</span></div>
+              </div>
+            </div>
+            <div class="rd-acct">
+              <div class="hd"><span class="ab" style="background:#7F1D1D">ES</span><span class="nm">Emirates Skywards</span><span class="bl">5,000 mi</span></div>
+              <p class="rd-sec" style="color:#8A8F9C">Not enough miles for any option yet &mdash; keep earning</p>
+              <p class="rd-sec save">Worth saving towards</p>
+              <div class="rd-save">
+                <b>One-Way Economy Saver (JFK&ndash;DXB)</b>
+                <p>Your 5,000 miles put you about 17% of the way to a one-way Economy Saver ticket from JFK to Dubai.</p>
+                <div class="bar"><div style="width:17%"></div></div>
+                <div class="fo"><span>5,000</span><span>25,000 to go</span><span>30,000</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rt" data-rt="bonuses" hidden>
+            <p class="hint">Updated 18h ago &middot; found by the agent, with a link back to the source.</p>
+            <div class="promo">
+              <div class="r1"><span class="tag">PROMO</span><span class="ti">20% Bonus on Award &amp; Tier Miles + Lowered Requirements</span><span class="amt">20% bonus</span></div>
+              <p>Emirates Skywards is offering a 20% bonus on Award and Tier Miles earned on flights, alongside a 20% reduction in Tier Qualification requirements, as part of the Season of Rewards campaign.</p>
+              <div class="fo"><span>Emirates Skywards</span><span class="ex">Valid for travel through 31 Aug 2026</span></div>
+            </div>
+            <div class="promo">
+              <div class="r1"><span class="tag">PROMO</span><span class="ti">Earn 5,000 Bonus Miles per Stay with Dusit Thani</span><span class="amt">5,000 miles</span></div>
+              <p>Etihad Guest members earn 5,000 bonus miles for every stay of two nights or longer at Dusit Thani properties.</p>
+              <div class="fo"><span>Etihad Guest</span><span class="ex">Ends 30 Jun 2026</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ SETTINGS ============ -->
+        <div class="pg" data-pg="settings" hidden>
+          <p class="app-h">Settings</p>
+          <div class="set">
+            <h6>About You &mdash; Travel Profile</h6>
+            <div class="row"><label>Home airport / base</label><span class="v">HVN (New Haven) &middot; JFK</span></div>
+            <div class="row"><label>Usually travel with</label><span class="v">Partner, sometimes family</span></div>
+            <div class="row"><label>Redemption style</label><span class="v">Economy on cash, points for Business or First</span></div>
+            <div class="row"><label>Upcoming trips</label><span class="v">Paris (Dec) &middot; Delhi (Mar)</span></div>
+            <div class="row"><label>Bigger goals</label><span class="v">Business class to Europe on points</span></div>
+          </div>
+          <div class="set">
+            <h6>Sync &amp; Keys</h6>
+            <div class="row"><label>AwardWallet API key</label><span class="v mono">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div>
+            <div class="row"><label>Anthropic API key</label><span class="v mono">&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div>
+            <div class="row"><label>Last synced</label><span class="v">Today, 9:14 AM</span></div>
+          </div>
+          <div class="set">
+            <h6>Display Preferences</h6>
+            <div class="row"><label>Show values in</label><span class="v">USD (toggle for INR)</span></div>
+            <div class="row"><label>USD &rarr; INR rate</label><span class="v">83.00</span></div>
+          </div>
+        </div>
       </div>
     </div>
     <p class="m-note">Sample balances, real logic: the live app syncs from AwardWallet and asks Claude to sanity-check every redemption rate.</p>
@@ -799,4 +1092,41 @@ if (cSend){
   document.getElementById("cForm").addEventListener("submit", function(e){ e.preventDefault(); cSend.click(); });
   buildMail();
 }
+
+/* ---------- points tracker: sidebar pages, redeem sub-tabs, live milestones ---------- */
+var appNav = document.querySelector(".app-nav");
+if (appNav){
+  appNav.addEventListener("click", function(e){
+    var a = e.target.closest("a[data-go]"); if(!a) return;
+    e.preventDefault();
+    appNav.querySelectorAll("a").forEach(function(x){ x.classList.remove("on"); });
+    a.classList.add("on");
+    document.querySelectorAll(".pg").forEach(function(p){ p.hidden = p.dataset.pg !== a.dataset.go; });
+    var main = document.querySelector(".app-main"); if (main) main.scrollTop = 0;
+  });
+}
+var rtTabs = document.getElementById("rtTabs");
+if (rtTabs){
+  rtTabs.addEventListener("click", function(e){
+    var b = e.target.closest(".rt-tab"); if(!b) return;
+    rtTabs.querySelectorAll(".rt-tab").forEach(function(x){ x.classList.remove("on"); });
+    b.classList.add("on");
+    document.querySelectorAll(".rt").forEach(function(p){ p.hidden = p.dataset.rt !== b.dataset.rt; });
+  });
+}
+function inr(n){
+  var s = String(Math.round(n)), last3 = s.slice(-3), rest = s.slice(0, -3);
+  return rest ? rest.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + "," + last3 : last3;
+}
+document.querySelectorAll('.ms .sp input[data-target]').forEach(function(inp){
+  inp.addEventListener("input", function(){
+    var target = +inp.dataset.target, val = Math.max(0, +inp.value || 0);
+    var pct = Math.min(100, Math.round(val / target * 100));
+    document.getElementById(inp.dataset.pct).textContent = pct + "%";
+    document.getElementById(inp.dataset.bar).style.width = pct + "%";
+    var cur = inp.dataset.cur;
+    var spEl = document.getElementById(inp.id.replace("ms", "sp"));
+    if (spEl) spEl.textContent = cur + (cur === "$" ? val.toLocaleString("en-US") : inr(val)) + " spent";
+  });
+});
 </script>
