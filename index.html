@@ -90,6 +90,8 @@
     transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;
   }
   .hero-cta:hover,.hero-cta:focus-visible{border-color:var(--rose);box-shadow:0 0 34px var(--glow);transform:translateY(-2px);outline:none}
+  .hero-cta.ghost{border-color:var(--hairline);background:transparent}
+  .hero-cta.ghost:hover,.hero-cta.ghost:focus-visible{border-color:var(--rose)}
 
   .chip{
     position:absolute;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.78rem;
@@ -486,6 +488,7 @@
     border:2px solid var(--hairline);margin-bottom:26px;position:relative;
   }
   .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
+  #hero .cta-row{position:relative;margin-top:4px}
   .footer-fine{margin-top:110px;padding:0 24px;position:relative;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;max-width:1060px;margin-left:auto;margin-right:auto}
   .footer-fine span{font-size:.8rem;color:var(--faint)}
 </style>
@@ -520,7 +523,10 @@
   <h1>say hello to your<br><span class="serif-it grad big-accent">AI engineer</span></h1>
   <p class="hero-sub">strategy brain from D. E. Shaw, builder hands from vibe coding</p>
   <span class="cert"><i>&#10022;</i>Officially Claude Certified</span>
-  <a class="hero-cta" href="#story">have a look &darr;</a>
+  <div class="cta-row">
+    <a class="hero-cta" href="#story">have a look &darr;</a>
+    <a class="hero-cta ghost" href="Saanchi_Agarwal_Resume.pdf" download>download r&eacute;sum&eacute; &darr;</a>
+  </div>
 </header>
 
 <section id="story">
